@@ -1,0 +1,11 @@
+version: '2'
+services:
+  rabbitmq:
+    image: rabbitmq:3.7-alpine
+    restart: unless-stopped
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+    command: sh -c "rabbitmq-plugins enable rabbitmq_management; rabbitmq-server"
